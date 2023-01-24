@@ -4,7 +4,7 @@ import openai
 import pandas as pd
 
 # Read Key
-T = pd.read_csv('/Users/marioacuna/Documents/openai_projects/API_key.csv')
+T = pd.read_csv('../API_key.csv')
 key = T['OpenAI API key']
 key = key[0]
 openai.api_key = key
