@@ -65,26 +65,38 @@ def run(query):
             json_url = f"https://api.elsevier.com/content/article/doi/{doi}?view=FULL"
             json_response = requests.get(json_url, headers=json_headers)
             print(json_response.status_code)
+            json_data = json_response.json()
 
-            if json_response.status_code == 200:
-                jsonfile = doi.replace('/', '_')
-                jsonfile = os.path.join(target_folder_json_full, jsonfile)
-                json_data = json_response.json()
-                if 'full-text-retrieval-response' in json_data:
-                    # replace full text with abstract
-                    json_data['full-text-retrieval-response'] = {
-                        'coredata': {'dc:description': result['dc:description']}}
-                with open(f"{jsonfile}.json", "w") as f:
-                    f.write(json.dumps(json_data))
-                print(f"JSON with full text saved as {jsonfile}.json.")
-            else:
-                # save the abstract when full text not accessible
-                jsonfile = doi.replace('/', '_')
-                jsonfile = os.path.join(target_folder_json_abstract, jsonfile)
-                json_data = {'abstract': description}
-                with open(f"{jsonfile}.json", "w") as f:
-                    f.write(json.dumps(json_data))
-                print(f"JSON with abstract saved as {jsonfile}.json.")
+            # New version 2
+            jsonfile = doi.replace('/', '_')
+
+            # check if full-text is available
+            if 'full-text-retrieval-response' in json_data:
+                # extract full-text from the json data
+                main_text = json_data['full-text-retrieval-response']['originalText']
+                jsonfile_full = os.path.join(target_folder_json_full, jsonfile)
+                # create a dictionary with the desired fields
+                json_dict = {'title': title, 'doi': doi, 'main_text': main_text}
+
+                # convert dictionary to json string
+                json_file = json.dumps(json_dict)
+
+                # write it
+                with open(f"{jsonfile_full}.json", "w") as f:
+                    f.write(json.dumps(json_file))
+
+            # extract abstract from the json data
+            jsonfile_abs = os.path.join(target_folder_json_abstract, jsonfile)
+
+            # create a dictionary with the desired fields
+            json_dict = {'title': title, 'doi': doi, 'main_text': description}
+
+            # convert dictionary to json string
+            json_file = json.dumps(json_dict)
+
+            # write it
+            with open(f"{jsonfile_abs}.json", "w") as f:
+                f.write(json.dumps(json_file))
         start += count
 
 
