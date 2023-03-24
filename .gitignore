@@ -4,3 +4,6 @@ API_key.csv
 *.csv
 *.xml
 *.iml
+**/download/
+**/.DS_Store
+
