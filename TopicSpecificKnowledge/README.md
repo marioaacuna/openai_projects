@@ -1,20 +1,30 @@
-Chatbot with Scientific Knowledge
-This repository contains code for a chatbot that utilizes scientific knowledge. The goal of the chatbot is to provide answers to questions related to regenerative medicine.
+# Chatbot for Scientific Knowledge
 
-Installation
-To use the chatbot, follow these steps:
+This repository contains scripts to generate a chatbot with specific scientific knowledge. Some of the scripts are taken from https://github.com/daveshap/ChatGPT_QA_Regenerative_Medicine. Please note that this is a work in progress and the repository is currently private.
 
-Clone the repository
-Install the required dependencies by running pip install -r requirements.txt
-Run the chatbot script by running python chatbot.py
-Usage
-Once the chatbot is running, it will prompt the user to enter a question related to regenerative medicine. The chatbot will then use OpenAI's GPT-3.5 model to generate a response to the question.
+## Requirements
 
-Acknowledgements
-Part of the code in this repository was taken from daveshap/ChatGPT_QA_Regenerative_Medicine.
+To use this chatbot, you need to have the following installed on your system:
 
-Contributing
-This repository is a work in progress, and contributions are welcome. If you have suggestions for improving the chatbot or adding new features, please submit a pull request or open an issue.
+- Python 3
+- Scopus API key
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Installation
+
+To install the necessary dependencies, run the following command:
+
+pip install -r requirements.txt
+
+
+## Usage
+
+To use the chatbot, run the following command:
+
+
+## Contributing
+
+If you find any bugs or want to contribute to this project, please feel free to create a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
