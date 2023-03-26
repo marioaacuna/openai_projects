@@ -6,4 +6,5 @@ API_key.csv
 *.iml
 **/download/
 **/.DS_Store
+**/embeddings_json/
 
