@@ -79,24 +79,27 @@ def run(query):
                 json_dict = {'title': title, 'doi': doi, 'main_text': main_text}
 
                 # convert dictionary to json string
-                json_file = json.dumps(json_dict)
+                # json_file = json.dumps(json_dict)
 
                 # write it
                 with open(f"{jsonfile_full}.json", "w") as f:
-                    f.write(json.dumps(json_file))
+                    f.write(json.dumps(json_dict))
+                print(f'{doi} Json saved')
 
             # extract abstract from the json data
             jsonfile_abs = os.path.join(target_folder_json_abstract, jsonfile)
 
             # create a dictionary with the desired fields
-            json_dict = {'title': title, 'doi': doi, 'main_text': description}
+            json_dict_abs = {'title': title, 'doi': doi, 'main_text': description}
 
             # convert dictionary to json string
-            json_file = json.dumps(json_dict)
+            # json_file = json.dumps(jsonfile_abs)
 
             # write it
             with open(f"{jsonfile_abs}.json", "w") as f:
-                f.write(json.dumps(json_file))
+                f.write(json.dumps(json_dict_abs))
+            print(f'{doi} Abstract saved')
+
         start += count
 
 
