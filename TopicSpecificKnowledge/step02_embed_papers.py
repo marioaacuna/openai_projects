@@ -139,7 +139,8 @@ if __name__ == "__main__":
 
     # Define the directories where the text files and output JSON files are located
     dir_path = "download/scopus/JSON/abstracts/"
-    out_path = "embeddings_json/"
+    out_path = '/Users/marioacuna/Library/Mobile Documents/com~apple~CloudDocs/AI_results/Knowledge/embeddings_json'
+    # out_path = "embeddings_json/"
 
     # Process the json files
     process_json_files(dir_path, out_path)
